@@ -42,13 +42,13 @@ def main(pdf_directory: str):
     chatbot.add_node(prompt_node, name="prompt", inputs=["retriever"])
 
     while True:
-        query = input("Enter a question: ")
+        query = input("\n\nEnter a question: ")
 
         if query == "exit":
             break
 
         response = chatbot.run(query=query)
-        print(response['results'])
+        print(response['results'], end="\n\n")
 
 
 if __name__ == '__main__':
