@@ -17,15 +17,15 @@ def main(pdf_directory: str):
     )
     document_store = InMemoryDocumentStore(use_bm25=True)
 
-    injest = Pipeline()
-    injest.add_node(text_extractor, name="text_extractor", inputs=["File"])
-    injest.add_node(preprocessor, name="preprocessor", inputs=["text_extractor"])
-    injest.add_node(document_store, name="document_store", inputs=["preprocessor"])
+    ingest = Pipeline()
+    ingest.add_node(text_extractor, name="text_extractor", inputs=["File"])
+    ingest.add_node(preprocessor, name="preprocessor", inputs=["text_extractor"])
+    ingest.add_node(document_store, name="document_store", inputs=["preprocessor"])
 
     path = Path(pdf_directory)
     files = list(path.glob('*.pdf'))
     files_metadata = [{"name": file.name, "path": file} for file in files]
-    injest.run(file_paths=files, meta=files_metadata)
+    ingest.run(file_paths=files, meta=files_metadata)
 
     retriever = BM25Retriever(document_store=document_store, top_k=5)
     prompt = PromptTemplate(
