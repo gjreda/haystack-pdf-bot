@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "haystack-pdf-bot"
+version = "0.1.0"
+description = ""
+authors = ["Greg Reda <gjreda+github@gmail.com>"]
+readme = "README.md"
+packages = [{include = "haystack_pdf_bot"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+farm-haystack = {extras = ["file-conversion", "pdf", "preprocessing"], version = "^1.16.1"}
+python-dotenv = "^1.0.0"
+
+
+[tool.poetry.group.dev.dependencies]
+ipython = "^8.13.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
