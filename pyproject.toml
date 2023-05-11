@@ -7,9 +7,11 @@ readme = "README.md"
 packages = [{include = "haystack_pdf_bot"}]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.9, !=3.9.7"
 farm-haystack = {extras = ["file-conversion", "pdf", "preprocessing"], version = "^1.16.1"}
 python-dotenv = "^1.0.0"
+streamlit = "^1.22.0"
+watchdog = "^3.0.0"
 
 
 [tool.poetry.group.dev.dependencies]
